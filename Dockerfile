@@ -1,7 +1,7 @@
 FROM ubuntu:bionic
 
-# docker build -t lio_sam lio_sam/
-# docker run -ti lio_sam
+# docker build -t lio_sam .
+# docker run -ti --network host lio_sam
 
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
@@ -12,7 +12,11 @@ RUN apt update && apt install -y gnupg2 git wget vim unzip
 
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros-latest.list'
 RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
-RUN apt update && apt install -y ros-melodic-ros-base libopencv-dev libboost-all-dev cmake ros-melodic-navigation ros-melodic-robot-localization ros-melodic-robot-state-publisher ros-melodic-cv-bridge ros-melodic-pcl-conversions ros-melodic-xacro ninja-build python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential libmetis-dev
+RUN apt update && apt install -y ros-melodic-ros-base libopencv-dev 
+RUN apt install -y libboost-all-dev cmake ros-melodic-navigation ros-melodic-robot-localization 
+RUN apt install -y ros-melodic-robot-state-publisher ros-melodic-cv-bridge ros-melodic-pcl-conversions 
+RUN apt install -y ros-melodic-xacro ninja-build python-rosdep python-rosinstall python-rosinstall-generator  
+RUN apt install -y build-essential libmetis-dev python-wstool
 
 RUN wget -O ~/gtsam.zip https://github.com/borglab/gtsam/archive/4.0.2.zip
 RUN unzip ~/gtsam.zip -d ~/
