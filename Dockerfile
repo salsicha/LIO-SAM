@@ -3,6 +3,8 @@ FROM ubuntu:bionic
 # docker build -t lio_sam .
 # docker run -ti --network host lio_sam
 
+# rviz -d launch/include/config/rviz.rviz
+
 ENV LANG=C.UTF-8 \
     LC_ALL=C.UTF-8 \
     ROS_DISTRO=melodic \
