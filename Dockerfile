@@ -26,6 +26,7 @@ RUN rosdep init
 RUN rosdep update --rosdistro $ROS_DISTRO
 
 RUN mkdir -p ~/catkin_ws/src
+
 WORKDIR /root/catkin_ws/src
 RUN git clone https://github.com/salsicha/LIO-SAM.git
 RUN /bin/bash -c "source /opt/ros/melodic/setup.bash && cd ~/catkin_ws/ && catkin_make"
